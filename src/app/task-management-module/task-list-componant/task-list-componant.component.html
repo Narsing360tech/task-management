@@ -5,19 +5,28 @@
       <div class="search-title">
         <mat-form-field appearance="outline">
           <mat-label>Outline form field</mat-label>
-          <input matInput placeholder="Placeholder" />
+          <input
+            matInput
+            [formControl]="titleFilter"
+            placeholder="Placeholder"
+          />
         </mat-form-field>
       </div>
       <div class="search-date">
         <mat-form-field appearance="outline">
           <mat-label>Select Date</mat-label>
-          <input matInput type="date" placeholder="Enter date" />
+          <input
+            matInput
+            type="date"
+            [formControl]="dateFilter"
+            placeholder="Enter date"
+          />
         </mat-form-field>
       </div>
       <div class="sort-by-name">
         <mat-form-field appearance="outline">
           <mat-label>Sort by taskname</mat-label>
-          <mat-select>
+          <mat-select [formControl]="sortBy">
             <mat-option value="asc">Ascending</mat-option>
             <mat-option value="desc">Descending</mat-option>
           </mat-select>

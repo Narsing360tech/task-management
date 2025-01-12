@@ -44,7 +44,7 @@ export const updateTaskFailure = createAction(
 );
 
 export const deleteTask = createAction(
-    '[Task] Update Task',
+    '[Task] Delete Task',
     props<{ id: any }>()
 );
 

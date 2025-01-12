@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TaskList } from './task-list-model';
 import { TaskAddUpdateDailogComponent } from '../task-add-update-dailog/task-add-update-dailog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -7,6 +7,7 @@ import { deleteTask, loadTasks } from 'src/app/state/task-management/task.action
 import { selectLoaded, selectTask } from 'src/app/state/task-management/task.selecter';
 import { ITask } from '../task.interface';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-task-list-componant',
@@ -16,10 +17,10 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 export class TaskListComponantComponent implements OnInit {
   taskModel!: TaskList;
   isLoaded: boolean = false;
-  @Input() appFilter!: ITask[];
-  @Input() filterTitle: string = '';
-  @Input() filterDate: string = '';
-  @Input() sortBy: string = 'asc';
+  titleFilter = new FormControl('');
+  dateFilter = new FormControl('');
+  sortBy = new FormControl('asc');
+
 
   private filteredDataSubject = new BehaviorSubject<ITask[]>([]);
   filteredData$ = this.filteredDataSubject.asObservable();
@@ -28,11 +29,8 @@ export class TaskListComponantComponent implements OnInit {
     this.taskModel = new TaskList;
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['appFilter'] || changes['filterTitle'] || changes['filterDate'] || changes['sortBy']) {
-      this.applyFiltersAndSort();
-    }
-  }
+
+
   ngOnInit(): void {
     this.store.pipe(select(selectLoaded)).subscribe((res) => {
       this.isLoaded = res;
@@ -43,9 +41,30 @@ export class TaskListComponantComponent implements OnInit {
     this.store.pipe(select(selectTask)).subscribe((res) => {
       this.taskModel.dataSource = res;
     })
+    this.titleFilter.valueChanges.subscribe(() => {
+      this.filterData();
+    });
+    this.dateFilter.valueChanges.subscribe(() => {
+      this.filterData();
+    });
+    this.sortBy.valueChanges.subscribe(() => {
+      this.filterData();
+    });
   }
-  private applyFiltersAndSort(): void {
 
+  filterData() {
+    const filteredData = this.taskModel.dataSource.filter(task => {
+      const matchesTitle = this.titleFilter.value ? task.title.toLowerCase().includes(this.titleFilter.value.toLowerCase()) : true;
+      const matchesDate = this.dateFilter.value ? task.date === this.dateFilter.value : false;
+      return matchesTitle && matchesDate;
+    });
+
+    const sortDirection = this.sortBy.value === 'asc' ? 1 : -1;
+    filteredData.sort((a, b) => a.title.localeCompare(b.title) * sortDirection);
+
+    const filterData = filteredData.length > 0 ? filteredData : [...this.taskModel.dataSource];
+    console.log("filterData", filterData);
+    this.taskModel.dataSource = filterData;
   }
 
   AddTask() {
@@ -53,12 +72,6 @@ export class TaskListComponantComponent implements OnInit {
       width: '800px',
       disableClose: true,
     });
-
-    // dialogRef.afterClosed().subscribe((result) => {
-    //   if (result) {
-    //     this.getAllGroups('');
-    //   }
-    // });
   }
 
   updateTask(task: ITask) {

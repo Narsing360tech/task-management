@@ -53,17 +53,21 @@ export const taskReducer = createReducer(
         loading: false,
         error
     })),
-    on(updateTask, (state, { newTask, id }) => ({
-        ...state,
-        tasks: state.tasks.map((t) =>
-            t.id === id ? { ...t, ...newTask } : t
-        ),
-        loading: false
-    })),
+
+    on(updateTask, (state, { newTask, id }) => {
+        return {
+            ...state,
+            tasks: state.tasks.map((t) =>
+                t.id == id ? { ...t, ...newTask } : t
+            ),
+            loading: false,
+        };
+    }),
+
     on(deleteTask, (state, { id }) => ({
         ...state,
         tasks: state.tasks.filter(item => item.id !== id),
-        loading: false
+        loaded: false
     })),
 
 

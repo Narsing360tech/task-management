@@ -41,6 +41,20 @@
       "description": "Study Angular basics and component communication.",
       "dueDate": "2025-01-15",
       "status": "Pending"
+    },
+    {
+      "id": "ca8c",
+      "title": "angular app",
+      "description": "nananna",
+      "dueDate": "2025-01-18",
+      "status": "Pending"
+    },
+    {
+      "id": "e944",
+      "title": "Narsing Task ",
+      "description": "Narsing S",
+      "dueDate": "2025-01-02",
+      "status": "Pending"
     }
   ]
 }
