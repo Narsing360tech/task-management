@@ -1,0 +1,112 @@
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 20px;
+  border-radius: 8px;
+
+  &__form-group {
+    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+  }
+
+  &__label {
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: #333;
+    text-align: left;
+  }
+
+  &__mat-form-field {
+    width: 100%;
+    border: none;
+
+    .mat-form-field-wrapper {
+      padding: 0;
+    }
+
+    .mat-form-field-underline {
+      display: none;
+    }
+
+    .mat-form-field-flex {
+      border-bottom: 2px solid #ddd;
+      transition: border-color 0.3s;
+
+      &:focus-within {
+        border-bottom-color: #1976d2;
+      }
+    }
+
+    .mat-form-field-label {
+      display: flex;
+      align-items: center;
+      color: #aaa;
+      transition: none;
+      pointer-events: none;
+    }
+
+    .mat-form-field-label-wrapper {
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .mat-form-field-empty.mat-form-field-label {
+      transform: none;
+    }
+
+    .mat-input-element {
+      text-align: left;
+      width: 100%;
+    }
+  }
+
+  &__mat-dialog-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: end;
+  }
+
+  .error-bullet {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: red;
+    margin-right: 5px;
+  }
+
+  .form-container__mat-dialog-actions {
+    text-align: center;
+  }
+
+  &__submit-button {
+    color: white;
+    background-color: green;
+  }
+
+  &__cancel-button {
+    color: white;
+    background-color: red;
+
+    &:disabled {
+      color: white !important;
+      cursor: not-allowed;
+    }
+  }
+
+  &__checkbox-group {
+    flex: 1 1 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+
+    .mat-checkbox {
+      margin-left: 8px;
+    }
+  }
+}

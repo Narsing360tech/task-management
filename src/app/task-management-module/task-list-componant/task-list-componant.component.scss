@@ -1,0 +1,46 @@
+.container {
+  padding: 40px;
+  &__title {
+    color: forestgreen;
+    font-family: "Courier New", Courier, monospace;
+  }
+
+  &__filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &--left {
+      display: flex;
+      gap: 10px;
+    }
+  }
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: calc(100vh - 350px);
+  padding: 16px;
+
+  .no-wrap {
+    text-wrap: nowrap;
+  }
+
+  .table {
+    width: 100% !important;
+  }
+
+  .mat-head {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .mat-cell {
+    font-weight: bold;
+    text-align: left;
+  }
+
+  .buttons-style {
+    cursor: pointer;
+  }
+}

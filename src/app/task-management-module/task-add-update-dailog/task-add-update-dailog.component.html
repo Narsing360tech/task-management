@@ -1,0 +1,87 @@
+<form [formGroup]="taskForm">
+  <div class="form-container">
+    <div class="form-container__form-group">
+      <label class="form-container__label">Task Title *</label>
+      <mat-form-field
+        appearance="outline"
+        class="form-container__mat-form-field"
+      >
+        <input
+          matInput
+          formControlName="title"
+          placeholder="Enter task title"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="form-container__form-group">
+      <label class="form-container__label">description *</label>
+      <mat-form-field
+        appearance="outline"
+        class="form-container__mat-form-field"
+      >
+        <input
+          matInput
+          formControlName="description"
+          placeholder="Enter description"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="form-container__form-group">
+      <label class="form-container__label">Due-Date *</label>
+      <mat-form-field
+        appearance="outline"
+        class="form-container__mat-form-field"
+      >
+        <input
+          matInput
+          type="date"
+          formControlName="dueDate"
+          placeholder="select dueDate"
+        />
+      </mat-form-field>
+    </div>
+    <div class="form-container__form-group">
+      <label class="form-container__label">Status *</label>
+      <mat-form-field
+        appearance="outline"
+        class="form-container__mat-form-field"
+      >
+        <mat-select formControlName="status" placeholder="Select status">
+          <mat-option disabled="true">Select user status</mat-option>
+          <mat-option *ngFor="let status of taskStatus" [value]="status.id">
+            {{ status.name | titlecase }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-container__mat-dialog-actions">
+    <button
+      mat-flat-button
+      type="button"
+      mat-dialog-close
+      class="form-container__cancel-button cancel"
+      (click)="onCancel()"
+    >
+      Cancel
+    </button>
+    <button
+      *ngIf="!this.data"
+      mat-flat-button
+      class="form-container__submit-button"
+      (click)="onAddTask()"
+    >
+      Add Task
+    </button>
+    <button
+      *ngIf="this.data"
+      mat-flat-button
+      class="form-container__submit-button"
+      (click)="onUpdateTask()"
+    >
+      Update Task
+    </button>
+  </div>
+</form>

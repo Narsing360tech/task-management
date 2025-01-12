@@ -1,0 +1,46 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Learn Angular",
+      "description": "Study Angular basics and component communication.",
+      "dueDate": "2025-01-15",
+      "status": "Pending"
+    },
+    {
+      "id": 2,
+      "title": "Complete Project",
+      "description": "Finalize the Angular project with mocked API.",
+      "dueDate": "2025-01-20",
+      "status": "Progress"
+    },
+    {
+      "id": "c809",
+      "title": "mann",
+      "description": "msmsm",
+      "dueDate": "2025-01-03",
+      "status": "Pending"
+    },
+    {
+      "id": "e43e",
+      "title": "Shubham ",
+      "description": "Arate",
+      "dueDate": "2025-01-03",
+      "status": "Pending"
+    },
+    {
+      "id": "d480",
+      "title": "prashant",
+      "description": "jjjjj",
+      "dueDate": "2025-01-10",
+      "status": "pending"
+    },
+    {
+      "id": "0804",
+      "title": "Learn React",
+      "description": "Study Angular basics and component communication.",
+      "dueDate": "2025-01-15",
+      "status": "Pending"
+    }
+  ]
+}
