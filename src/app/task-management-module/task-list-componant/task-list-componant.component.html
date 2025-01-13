@@ -47,7 +47,11 @@
       <div class="mat-elevation-z8 grid-container">
         <table mat-table class="table" [dataSource]="taskModel.dataSource">
           <ng-container
-            *ngFor="let column of taskModel.displayedColumns; let index"
+            *ngFor="
+              let column of taskModel.displayedColumns;
+              let index;
+              trackBy: trackByColumn
+            "
             [matColumnDef]="column.id"
           >
             <th mat-header-cell *matHeaderCellDef class="mat-head">
@@ -81,7 +85,8 @@
             *matRowDef="
               let row;
               columns: getDisplayedGroupsIds();
-              let even = even
+              let even = even;
+              trackBy: trackByRow
             "
             [ngClass]="{ 'alternate-row': !even }"
           ></tr>
