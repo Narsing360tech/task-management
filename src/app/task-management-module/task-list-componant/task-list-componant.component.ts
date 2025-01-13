@@ -52,6 +52,13 @@ export class TaskListComponantComponent implements OnInit {
     });
   }
 
+  trackByRow(index: number, row: any): any {
+    return row.id || row;
+  }
+
+  trackByColumn(index: number, column: any): string {
+    return column.id;
+  }
   filterData() {
     const filteredData = this.taskModel.dataSource.filter(task => {
       const matchesTitle = this.titleFilter.value ? task.title.toLowerCase().includes(this.titleFilter.value.toLowerCase()) : true;
