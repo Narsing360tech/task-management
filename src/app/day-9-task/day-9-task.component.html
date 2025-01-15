@@ -1,0 +1,14 @@
+<div class="main-container">
+  <cdk-virtual-scroll-viewport
+    itemSize="50"
+    minBufferPx="200"
+    maxBufferPx="400"
+    class="example-viewport"
+  >
+    <div *cdkVirtualFor="let item of imagesList" class="example-item">
+      <div class="images">
+        <img [src]="item.download_url" [alt]="item.name" />
+      </div>
+    </div>
+  </cdk-virtual-scroll-viewport>
+</div>

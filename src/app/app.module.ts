@@ -21,13 +21,16 @@ import { EffectsModule } from '@ngrx/effects';
 import { AllTaskEffect } from './state/task-management/task.effect';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { Day9TaskComponent } from './day-9-task/day-9-task.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    Day9TaskComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatTableModule,
     HttpClientModule,
     MatSnackBarModule,
+    ScrollingModule,
     StoreModule.forRoot({
       tasks: taskReducer
     }),

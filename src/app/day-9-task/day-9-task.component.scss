@@ -1,0 +1,17 @@
+.example-viewport {
+  height: 1024px;
+  width: 100vw;
+  border: 1px solid black;
+}
+
+.example-item {
+  height: 300px;
+  width: 100%;
+}
+
+.images {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  margin: 5px;
+}
