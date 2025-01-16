@@ -56,5 +56,55 @@
       "dueDate": "2025-01-02",
       "status": "Pending"
     }
+  ] ,
+
+  
+  "userProfiles": [
+    {
+      "id": 1,
+      "name": "Narsing",
+      "email": "Narsing@gmail.com",
+      "role": "Admin"
+    },
+    {
+      "id": 2,
+      "name": "Vivek",
+      "email": "Vivek@gmail.com",
+      "role": "Editor"
+    },
+    {
+      "id": 3,
+      "name": "Sachin",
+      "email": "sachin@gmail.com",
+      "role": "Viewer"
+    }
+  ],
+  "userPermissions": [
+    {
+      "role": "Admin",
+      "permissions": [
+        "create_user",
+        "delete_user",
+        "update_user",
+        "view_user"
+      ]
+    },
+    {
+      "role": "Editor",
+      "permissions": [
+        "create_content",
+        "edit_content",
+        "delete_content"      ]
+    },
+    {
+      "role": "Viewer",
+      "permissions": [
+        "view_content",
+        "download_content",
+        "view_reports"
+      ]
+    }
   ]
+
+
 }

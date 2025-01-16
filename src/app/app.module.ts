@@ -23,6 +23,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { Day9TaskComponent } from './day-9-task/day-9-task.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { Day10Component } from './day-10/day-10.component';
 
 
 
@@ -30,7 +31,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
   declarations: [
     AppComponent,
     LandingPageComponent,
-    Day9TaskComponent
+    Day9TaskComponent,
+    Day10Component
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+<div class="user-cards">
+  <div *ngFor="let data of combinedData" class="card">
+    <h3>{{ data.profile.name }}</h3>
+    <p>Email: {{ data.profile.email }}</p>
+    <h4>Permissions:</h4>
+    <ul>
+      <li *ngFor="let permission of data.permissions">
+        {{ permission }}
+      </li>
+    </ul>
+  </div>
+</div>
