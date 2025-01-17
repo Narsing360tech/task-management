@@ -1,0 +1,35 @@
+<div class="search-container">
+  <mat-form-field appearance="outline">
+    <mat-label>Search</mat-label>
+    <input matInput [formControl]="searchText" placeholder="Enter Name" />
+  </mat-form-field>
+</div>
+<div class="main-container">
+  <cdk-virtual-scroll-viewport
+    itemSize="50"
+    minBufferPx="200"
+    maxBufferPx="400"
+    class="example-viewport"
+  >
+    <div *ngIf="filteredList.length" class="card-wrapper">
+      <div *cdkVirtualFor="let item of filteredList" class="example-item">
+        <div class="card" #cardItem>
+          <div class="images">
+            <img
+              [src]="item.download_url"
+              [matTooltip]="item.download_url"
+              matTooltipPosition="above"
+              matTooltipShowDelay="500"
+            />
+          </div>
+          <div class="title">
+            <h1>{{ item.author }}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!filteredList.length" class="empty-state">
+      <h1>No Product Found</h1>
+    </div>
+  </cdk-virtual-scroll-viewport>
+</div>

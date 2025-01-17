@@ -24,6 +24,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { Day9TaskComponent } from './day-9-task/day-9-task.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { Day10Component } from './day-10/day-10.component';
+import { Day11TaskComponent } from './day-11/day-11-task/day-11-task.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 
@@ -32,7 +34,8 @@ import { Day10Component } from './day-10/day-10.component';
     AppComponent,
     LandingPageComponent,
     Day9TaskComponent,
-    Day10Component
+    Day10Component,
+    Day11TaskComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +45,7 @@ import { Day10Component } from './day-10/day-10.component';
     MatInputModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatTooltipModule,
     MatFormFieldModule,
     MatSelectModule,
     MatListModule,
