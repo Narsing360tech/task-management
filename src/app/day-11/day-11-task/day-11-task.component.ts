@@ -22,7 +22,7 @@ export class Day11TaskComponent {
     this.getAllImages();
   }
   ngAfterViewChecked() {
-    this.cardItems?.toArray().forEach((card, index) => {
+    this.cardItems?.toArray().forEach((card) => {
       if (card) {
         this.renderer.setStyle(card.nativeElement, 'border', '3px solid lightblue');
       }
