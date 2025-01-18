@@ -1,0 +1,170 @@
+<form [formGroup]="loanForm" (ngSubmit)="onSubmit()" class="loan-form">
+  <h3>Personal Information</h3>
+  <div formGroupName="personalInfo">
+    <mat-form-field appearance="outline">
+      <mat-label>Full Name</mat-label>
+      <input matInput formControlName="fullName" />
+      <mat-error
+        *ngIf="loanForm.get('personalInfo.fullName')?.hasError('required')"
+      >
+        Full Name is required.
+      </mat-error>
+      <mat-error
+        *ngIf="loanForm.get('personalInfo.fullName')?.hasError('minlength')"
+      >
+        Full Name length 3 characters needed.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+      <mat-error
+        *ngIf="loanForm.get('personalInfo.email')?.hasError('required')"
+      >
+        Email is required.
+      </mat-error>
+      <mat-error *ngIf="loanForm.get('personalInfo.email')?.hasError('email')">
+        Enter a valid email.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Age</mat-label>
+      <input matInput type="number" formControlName="age" />
+      <mat-error *ngIf="loanForm.get('personalInfo.age')?.hasError('required')">
+        Age is required.
+      </mat-error>
+      <mat-error *ngIf="loanForm.get('personalInfo.age')?.hasError('min')">
+        enter minmumn 18.
+      </mat-error>
+      <mat-error *ngIf="loanForm.get('personalInfo.age')?.hasError('max')">
+        enter maximum 70
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <h3>Employment Details</h3>
+  <div formGroupName="employmentDetails">
+    <mat-form-field appearance="outline">
+      <mat-label>Employment Type</mat-label>
+      <mat-select formControlName="employmentType">
+        <mat-option
+          *ngFor="let option of employmentTypeOptions"
+          [value]="option"
+          >{{ option }}</mat-option
+        >
+      </mat-select>
+      <mat-error
+        *ngIf="
+          loanForm.get('employmentDetails.employmentType')?.hasError('required')
+        "
+      >
+        Employment is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+      *ngIf="
+        loanForm.get('employmentDetails.employmentType')?.value === 'Employed'
+      "
+      appearance="outline"
+    >
+      <mat-label>Employer Name</mat-label>
+      <input matInput formControlName="employerName" />
+      <mat-error
+        *ngIf="
+          loanForm.get('employmentDetails.employerName')?.hasError('required')
+        "
+      >
+        employerName is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+      *ngIf="
+        loanForm.get('employmentDetails.employmentType')?.value !== 'Unemployed'
+      "
+      appearance="outline"
+    >
+      <mat-label>Annual Income</mat-label>
+      <input matInput type="number" formControlName="annualIncome" />
+      <mat-error
+        *ngIf="
+          loanForm.get('employmentDetails.annualIncome')?.hasError('required')
+        "
+      >
+        Annual Income is required
+      </mat-error>
+      <div
+        *ngIf="
+          loanForm
+            .get('employmentDetails.annualIncome')
+            ?.hasError('incomeValiator()')
+        "
+      >
+        Invalid income.
+      </div>
+    </mat-form-field>
+  </div>
+
+  <h3>Loan Details</h3>
+  <div formGroupName="loanDetails">
+    <mat-form-field appearance="outline">
+      <mat-label>Loan Amount</mat-label>
+      <input matInput type="number" formControlName="loanAmount" />
+      <mat-error
+        *ngIf="loanForm.get('loanDetails.loanAmount')?.hasError('required')"
+      >
+        Loan Amount is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Loan Purpose</mat-label>
+      <mat-select formControlName="loanPurpose">
+        <mat-option
+          *ngFor="let option of loanPurposeOptions"
+          [value]="option"
+          >{{ option }}</mat-option
+        >
+        <mat-error
+          *ngIf="loanForm.get('loanDetails.loanPurpose')?.hasError('required')"
+        >
+          Loan Purpose is required
+        </mat-error>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field
+      *ngIf="loanForm.get('loanDetails.loanPurpose')?.value === 'Other'"
+      appearance="outline"
+    >
+      <mat-label>Other Purpose Description</mat-label>
+      <input matInput formControlName="otherPurposeDescription" />
+    </mat-form-field>
+  </div>
+
+  <mat-checkbox formControlName="termsAggred">
+    I agree to this conditions.
+  </mat-checkbox>
+  <mat-error
+    *ngIf="
+      loanForm.get('termsAccepted')?.hasError('required') &&
+      loanForm.get('termsAccepted')?.touched
+    "
+  >
+    You must agree to the terms.
+  </mat-error>
+
+  <div class="actions">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="loanForm.invalid"
+    >
+      Submit
+    </button>
+  </div>
+</form>
