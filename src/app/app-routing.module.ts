@@ -8,11 +8,19 @@ import { Day12Component } from './day-12/day-12/day-12.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
-  { path: 'taskManagementModule', loadChildren: () => import('./task-management-module/task-management-module.module').then(m => m.TaskManagementModuleModule) },
+  {
+    path: 'taskManagementModule', loadChildren: () =>
+      import('./task-management-module/task-management-module.module').then(m => m.TaskManagementModuleModule)
+  },
+  {
+    path: 'profileModule', loadChildren: () =>
+      import('./day-13/user-profile-module/user-profile-module.module').then(m => m.UserProfileModuleModule)
+  },
   { path: 'day-9', component: Day9TaskComponent },
   { path: 'day-10', component: Day10Component },
   { path: 'day-11', component: Day11TaskComponent },
-  { path: 'day-12', component: Day12Component }
+  { path: 'day-12', component: Day12Component },
+
 
 ];
 @NgModule({

@@ -27,6 +27,7 @@ import { Day10Component } from './day-10/day-10.component';
 import { Day11TaskComponent } from './day-11/day-11-task/day-11-task.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Day12Component } from './day-12/day-12/day-12.component';
+import { UserProfileComponent } from './day-13/user-profile/user-profile.component';
 
 
 
@@ -37,7 +38,8 @@ import { Day12Component } from './day-12/day-12/day-12.component';
     Day9TaskComponent,
     Day10Component,
     Day11TaskComponent,
-    Day12Component
+    Day12Component,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
