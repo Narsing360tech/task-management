@@ -1,0 +1,22 @@
+<div *ngIf="formData">
+  <mat-card class="user-info-card">
+    <mat-card-header class="header">
+      <h4>#User Info</h4>
+      <button mat-icon-button class="toggle-button" (click)="toggleTheme()">
+        <mat-icon>{{ isDarkMode ? "wb_sunny" : "nights_stay" }}</mat-icon>
+      </button>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="form-data">
+        <strong>Full Name:</strong> {{ formData.fullName }}
+      </div>
+      <div class="form-data"><strong>Email:</strong> {{ formData.email }}</div>
+      <div class="form-data">
+        <strong>Phone Number:</strong> {{ formData.number }}
+      </div>
+      <div class="form-data">
+        <strong>Address:</strong> {{ formData.address }}
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

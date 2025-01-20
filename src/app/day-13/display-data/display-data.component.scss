@@ -1,0 +1,69 @@
+:host {
+  background: #ffffff;
+  color: #000000;
+  display: block;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.user-info-card {
+  background: #f9f9f9;
+  color: #000000;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+:host.dark-theme {
+  background: #121212;
+  color: #ffffff;
+}
+
+:host.dark-theme .user-info-card {
+  background: #333333;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.form-data {
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 16px;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+:host.dark-theme .form-data {
+  background: #444444;
+  border: 1px solid #555555;
+}
+
+.title {
+  margin-top: 12px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+}
+
+.toggle-button-wrapper {
+  display: flex;
+  align-items: end;
+}
+
+.toggle-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+:host.dark-theme .toggle-button {
+  color: #ffffff;
+}

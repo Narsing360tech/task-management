@@ -1,5 +1,9 @@
 <div class="container">
-  <form [formGroup]="userInfo" class="formData" (ngSubmit)="onSubmit()">
+  <form
+    [formGroup]="userInfo"
+    class="formData"
+    (ngSubmit)="openConfirmDialog()"
+  >
     <div>
       <mat-form-field appearance="outline">
         <mat-label>Full Name</mat-label>
@@ -47,7 +51,7 @@
           Number is required.
         </mat-error>
         <mat-error *ngIf="userInfo.get('number')?.hasError('pattern')">
-          Number is Should be
+          Number is should be in 10 digit
         </mat-error>
       </mat-form-field>
     </div>
@@ -57,27 +61,20 @@
         <mat-label>Address</mat-label>
         <input matInput formControlName="address" />
         <mat-error *ngIf="userInfo.get('address')?.hasError('required')">
-          Number is required.
+          Address is required.
         </mat-error>
-        <!-- <mat-error *ngIf="userInfo.get('address')?.hasError('pattern')">
-      Number is Should be
-    </mat-error> -->
       </mat-form-field>
     </div>
 
     <div class="update-button">
-      <button mat-flat-button color="primary">Update</button>
+      <button mat-flat-button color="primary" [disabled]="userInfo.invalid">
+        Update
+      </button>
     </div>
   </form>
-  <ng-container *ngIf="userInfo.valid">
-    <h1>User Info</h1>
-    <div class="form-data">
-      Full name : {{ userInfo.get("fullName")?.value }}
+  <ng-container>
+    <div class="data-wrapper">
+      <app-display-data></app-display-data>
     </div>
-    <div class="form-data">Email : {{ userInfo.get("email")?.value }}</div>
-    <div class="form-data">
-      Phone Number : {{ userInfo.get("number")?.value }}
-    </div>
-    <div class="form-data">Address :{{ userInfo.get("address")?.value }}</div>
   </ng-container>
 </div>

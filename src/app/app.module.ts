@@ -28,6 +28,10 @@ import { Day11TaskComponent } from './day-11/day-11-task/day-11-task.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Day12Component } from './day-12/day-12/day-12.component';
 import { UserProfileComponent } from './day-13/user-profile/user-profile.component';
+import { ConfirmationDialogComponent } from './day-13/confirmation-dialog/confirmation-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DisplayDataComponent } from './day-13/display-data/display-data.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -39,7 +43,9 @@ import { UserProfileComponent } from './day-13/user-profile/user-profile.compone
     Day10Component,
     Day11TaskComponent,
     Day12Component,
-    UserProfileComponent
+    UserProfileComponent,
+    ConfirmationDialogComponent,
+    DisplayDataComponent
   ],
   imports: [
     BrowserModule,
@@ -56,8 +62,10 @@ import { UserProfileComponent } from './day-13/user-profile/user-profile.compone
     MatCardModule,
     MatTableModule,
     HttpClientModule,
+    MatIconModule,
     MatSnackBarModule,
     ScrollingModule,
+    MatDialogModule,
     StoreModule.forRoot({
       tasks: taskReducer
     }),
