@@ -1,0 +1,42 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="user-form">
+  <div class="control-container">
+    <mat-label>Username</mat-label>
+    <mat-form-field appearance="outline" class="form-field">
+      <input matInput formControlName="username" placeholder="Enter username" />
+      <mat-error *ngIf="userForm.controls['username'].hasError('required')">
+        Username is required
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="control-container">
+    <mat-label>Remark</mat-label>
+    <mat-form-field appearance="outline" class="form-field">
+      <input matInput formControlName="remark" placeholder="Enter remark" />
+      <mat-error *ngIf="userForm.controls['remark'].hasError('required')">
+        Remark is required
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <div class="control-container">
+      <mat-label>Status</mat-label>
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-select formControlName="status">
+          <mat-option value="Active">Active</mat-option>
+          <mat-option value="Inactive">Inactive</mat-option>
+        </mat-select>
+        <mat-error *ngIf="userForm.controls['status'].hasError('required')">
+          Status is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="userForm.invalid"
+  >
+    {{ this.data ? "Update" : "Add" }}
+  </button>
+</form>

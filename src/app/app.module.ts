@@ -35,6 +35,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { UserInfoComponent } from './day-15/user-info/user-info.component';
 import { userReducer } from './state/users/user.reducer';
 import { UserEffects } from './state/users/users.effect';
+import { UserDataPageComponent } from './day-16/componant/user-data-page/user-data-page.component';
+import { CreateorupdateComponent } from './day-16/componant/createorupdate/createorupdate.component';
+import { userstateReducer } from './state/day-16/userstate.reducer';
+import { UserStateEffects } from './state/day-16/userstate.effect';
+import { DeleteConfirmComponent } from './day-16/componant/delete-confirm/delete-confirm.component';
 
 
 
@@ -50,6 +55,9 @@ import { UserEffects } from './state/users/users.effect';
     ConfirmationDialogComponent,
     DisplayDataComponent,
     UserInfoComponent,
+    UserDataPageComponent,
+    CreateorupdateComponent,
+    DeleteConfirmComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,8 +84,8 @@ import { UserEffects } from './state/users/users.effect';
     EffectsModule.forRoot([
       AllTaskEffect
     ]),
-    StoreModule.forRoot({ users: userReducer }),
-    EffectsModule.forRoot([UserEffects]),
+    StoreModule.forRoot({ users: userReducer, userstate: userstateReducer }),
+    EffectsModule.forRoot([UserEffects, UserStateEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
 
   ],
