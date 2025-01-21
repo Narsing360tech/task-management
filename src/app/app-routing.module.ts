@@ -5,6 +5,7 @@ import { Day9TaskComponent } from './day-9-task/day-9-task.component';
 import { Day10Component } from './day-10/day-10.component';
 import { Day11TaskComponent } from './day-11/day-11-task/day-11-task.component';
 import { Day12Component } from './day-12/day-12/day-12.component';
+import { UserInfoComponent } from './day-15/user-info/user-info.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'day-10', component: Day10Component },
   { path: 'day-11', component: Day11TaskComponent },
   { path: 'day-12', component: Day12Component },
+  { path: 'day-15', component: UserInfoComponent },
 
 
 ];

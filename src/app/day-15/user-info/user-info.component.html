@@ -1,0 +1,26 @@
+<div class="card-container">
+  <div
+    class="card"
+    *ngFor="let user of users$ | async"
+    #userCard
+    [attr.data-user-status]="user.status"
+  >
+    <h3>{{ user.name }}</h3>
+    <p>Status: {{ user.status }}</p>
+    <div class="userstatus">
+      <mat-label>Status</mat-label>
+      <mat-form-field appearance="outline">
+        <mat-select
+          [(value)]="user.status"
+          (selectionChange)="updateStatus(user.id, $event.value)"
+        >
+          <mat-option value="interviewing">Interviewing</mat-option>
+          <mat-option value="interview-done">Interview Done</mat-option>
+          <mat-option value="onboarded">Onboarded</mat-option>
+          <mat-option value="rejected">Rejected</mat-option>
+          <mat-option value="failed">Failed</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</div>

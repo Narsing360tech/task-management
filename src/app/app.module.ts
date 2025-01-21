@@ -32,6 +32,9 @@ import { ConfirmationDialogComponent } from './day-13/confirmation-dialog/confir
 import { MatDialogModule } from '@angular/material/dialog';
 import { DisplayDataComponent } from './day-13/display-data/display-data.component';
 import { MatIconModule } from '@angular/material/icon';
+import { UserInfoComponent } from './day-15/user-info/user-info.component';
+import { userReducer } from './state/users/user.reducer';
+import { UserEffects } from './state/users/users.effect';
 
 
 
@@ -45,7 +48,8 @@ import { MatIconModule } from '@angular/material/icon';
     Day12Component,
     UserProfileComponent,
     ConfirmationDialogComponent,
-    DisplayDataComponent
+    DisplayDataComponent,
+    UserInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,6 +76,8 @@ import { MatIconModule } from '@angular/material/icon';
     EffectsModule.forRoot([
       AllTaskEffect
     ]),
+    StoreModule.forRoot({ users: userReducer }),
+    EffectsModule.forRoot([UserEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
 
   ],
