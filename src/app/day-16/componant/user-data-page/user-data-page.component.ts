@@ -15,6 +15,10 @@ import { DeleteConfirmComponent } from '../delete-confirm/delete-confirm.compone
 export class UserDataPageComponent {
   users$: Observable<any>;
   usersData: any[] = [];
+
+  @ViewChildren('userCards', { read: ElementRef })
+  userCardElements!: QueryList<ElementRef>;
+
   constructor(private dialog: MatDialog, private store: Store, private renderer: Renderer2) {
     this.users$ = this.store.select(selectStateUsers);
     this.users$.subscribe((res) => {
@@ -25,29 +29,61 @@ export class UserDataPageComponent {
   addUser() {
     const dialogRef = this.dialog.open(CreateorupdateComponent, {
       width: '600px',
-      autoFocus: false
+      autoFocus: false,
     });
 
-    dialogRef.afterClosed().subscribe((result: any) => { })
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        console.log(result);
+        setTimeout(() => {
+          const newCard = this.userCardElements.last;
+          if (newCard) {
+            this.renderer.addClass(newCard.nativeElement, 'fade-in');
+          }
+        }, 100);
+      }
+    });
   }
-
-
 
 
   updateUser(user: any) {
     const dialogRef = this.dialog.open(CreateorupdateComponent, {
       width: '600px',
       autoFocus: false,
-      data: user
+      data: user,
     });
 
-    dialogRef.afterClosed().subscribe((result: any) => { })
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        const updatedCard = this.userCardElements.find(
+          (el) => el.nativeElement.id === `user-card-${user.id}`
+        );
+        if (updatedCard) {
+          this.renderer.addClass(updatedCard.nativeElement, 'fade-in');
+          setTimeout(() => {
+            this.renderer.removeClass(updatedCard.nativeElement, 'fade-in');
+          }, 1000);
+        }
+      }
+    });
   }
+
+
 
   deleteUser(user: any) {
-    this.openConfirmDialog(user)
-  }
+    const targetCard = this.userCardElements.find(
+      (el) => el.nativeElement.id === `user-card-${user.id}`
+    );
 
+    if (targetCard) {
+      this.renderer.addClass(targetCard.nativeElement, 'fade-out');
+      setTimeout(() => {
+        this.store.dispatch(deleteUser({ id: user.id }));
+      }, 500);
+    } else {
+      this.store.dispatch(deleteUser({ id: user.id }));
+    }
+  }
   openConfirmDialog(user: any): void {
     const dialogRef = this.dialog.open(DeleteConfirmComponent, {
       width: '400px',

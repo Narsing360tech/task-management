@@ -41,13 +41,16 @@ export class UserStateEffects {
         this.actions$.pipe(
             ofType(UserActions.updateUser),
             switchMap((action) => {
+                console.log("action.user", action.user);
                 try {
                     console.log("update user call");
                     const data = localStorage.getItem('userStateData');
                     const previousData = data ? JSON.parse(data) : [];
+                    console.log("previous ", previousData);
                     const updatedData = previousData.map((user: any) =>
                         user.id === action.user.id ? { ...user, ...action.user } : user
                     );
+                    console.log("update data", updatedData);
                     localStorage.setItem('userStateData', JSON.stringify(updatedData));
                     return of(UserActions.updateUserSuccess({ user: action.user }));
                 } catch (error: any) {

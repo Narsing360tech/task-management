@@ -75,13 +75,22 @@ span.inactive {
 }
 
 @keyframes fadeIn {
+  // 0% {
+  //   opacity: 0;
+  //   transform: translateY(-10px);
+  // }
+  // 100% {
+  //   opacity: 1;
+  //   transform: translateY(0);
+  // }
   0% {
-    opacity: 0;
-    transform: translateY(-10px);
+    transform: rotateY(0);
+  }
+  50% {
+    transform: rotateY(90deg);
   }
   100% {
-    opacity: 1;
-    transform: translateY(0);
+    transform: rotateY(0);
   }
 }
 
@@ -97,9 +106,9 @@ span.inactive {
 }
 
 .fade-in {
-  animation: fadeIn 0.5s ease-in-out;
+  animation: fadeIn 2.5s ease-in-out;
 }
 
 .fade-out {
-  animation: fadeOut 0.5s ease-in-out;
+  animation: fadeOut 2s ease-in-out;
 }

@@ -41,11 +41,12 @@ export class CreateorupdateComponent {
       const userData = this.userForm.value;
       if (!this.data) {
         this.store.dispatch(addUser({ user: userData, isFrom: true }));
-        this.dialogRef.close();
+        this.dialogRef.close(true);
       }
       else {
-        this.store.dispatch(updateUser({ user: userData }));
-        this.dialogRef.close();
+        const payload = { ...userData, id: this.data.id }
+        this.store.dispatch(updateUser({ user: payload }));
+        this.dialogRef.close(true);
       }
 
     }
