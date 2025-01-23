@@ -12,6 +12,7 @@ import { addUser, updateUser } from 'src/app/state/day-16/userstate.action';
 export class CreateorupdateComponent {
 
   userForm!: FormGroup;
+  statuses: string[] = ['Interviewing', 'Onboarded'];
 
   constructor(private fb: FormBuilder,
     private store: Store,

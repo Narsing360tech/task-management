@@ -7,12 +7,16 @@ export interface UserState {
     users: any[];
     loading: boolean;
     error: string | null;
+    statusFilter: string;
+    searchTerm: string;
 }
 
 export const initialState: UserState = {
     users: [],
     loading: false,
-    error: null
+    error: null,
+    statusFilter: 'all',
+    searchTerm: ''
 };
 
 export const userstateReducer = createReducer(
@@ -50,5 +54,14 @@ export const userstateReducer = createReducer(
         ...state,
         loading: false,
         error
+    })),
+    on(UserActions.setStatusFilter, (state, { status }) => (
+        {
+            ...state,
+            statusFilter: status
+        })),
+    on(UserActions.setSearchTerm, (state, { searchTerm }) => ({
+        ...state,
+        searchTerm: searchTerm
     }))
 );

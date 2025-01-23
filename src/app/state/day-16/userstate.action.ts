@@ -44,3 +44,14 @@ export const deleteUserFailure = createAction(
     '[User] Delete User Failure',
     props<{ error: string }>()
 );
+
+export const setStatusFilter = createAction(
+    '[User] Set Status Filter',
+    props<{ status: string }>()
+);
+
+export const setSearchTerm = createAction(
+    '[User] Set Search Term',
+    props<{ searchTerm: string }>()
+);
+

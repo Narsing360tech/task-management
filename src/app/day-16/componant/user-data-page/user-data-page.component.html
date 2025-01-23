@@ -5,12 +5,40 @@
       Add User
     </button>
   </div>
+  <div class="filters-control">
+    <div class="control-container">
+      <div>
+        <label>Search by name</label>
+      </div>
+      <mat-form-field appearance="outline" class="form-field">
+        <input
+          matInput
+          [formControl]="nameSearch"
+          placeholder="Search by name"
+        />
+      </mat-form-field>
+    </div>
+    <div class="control-container">
+      <div>
+        <label>Search by status</label>
+      </div>
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-select [formControl]="filterStatus" placeholder="Search by status">
+          <mat-option *ngFor="let item of statuses" [value]="item">
+            {{ item }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
   <div class="user-card-grid">
     <mat-card
       class="user-card"
-      *ngFor="let user of users$ | async"
+      *ngFor="let user of filteredUsers$ | async"
       #userCards
       [id]="'user-card-' + user.id"
+      (mouseenter)="onCardMouseEnter(userCards)"
+      (mouseleave)="onCardMouseLeave(userCards)"
     >
       <mat-card-header class="card-header">
         <mat-card-title class="card-title">{{ user.username }}</mat-card-title>

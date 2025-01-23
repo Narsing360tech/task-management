@@ -22,8 +22,9 @@
       <mat-label>Status</mat-label>
       <mat-form-field appearance="outline" class="form-field">
         <mat-select formControlName="status">
-          <mat-option value="Active">Active</mat-option>
-          <mat-option value="Inactive">Inactive</mat-option>
+          <mat-option *ngFor="let item of statuses" [value]="item">
+            {{ item }}
+          </mat-option>
         </mat-select>
         <mat-error *ngIf="userForm.controls['status'].hasError('required')">
           Status is required
