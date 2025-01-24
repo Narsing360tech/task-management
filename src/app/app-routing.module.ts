@@ -7,25 +7,42 @@ import { Day11TaskComponent } from './day-11/day-11-task/day-11-task.component';
 import { Day12Component } from './day-12/day-12/day-12.component';
 import { UserInfoComponent } from './day-15/user-info/user-info.component';
 import { UserDataPageComponent } from './day-16/componant/user-data-page/user-data-page.component';
+import { accessGuardGuard } from './guard/access-guard.guard';
+import { UnAuthorizedComponent } from './landing-page/un-authorized/un-authorized.component';
+import { TextResolver } from './resolver';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
+  // {
+  //   path: 'taskManagementModule', loadChildren: () =>
+  //     import('./task-management-module/task-management-module.module').then(m => m.TaskManagementModuleModule)
+  // },
+  // {
+  //   path: 'profileModule', loadChildren: () =>
+  //     import('./day-13/user-profile-module/user-profile-module.module').then(m => m.UserProfileModuleModule)
+  // },
+  // { path: 'day-9', component: Day9TaskComponent },
+  // { path: 'day-10', component: Day10Component },
+  // { path: 'day-11', component: Day11TaskComponent },
+  // { path: 'day-12', component: Day12Component },
+  // { path: 'day-15', component: UserInfoComponent },
+  // { path: 'day-16', component: UserDataPageComponent },
+
+  { path: 'unauthorized', component: UnAuthorizedComponent },
+
   {
-    path: 'taskManagementModule', loadChildren: () =>
-      import('./task-management-module/task-management-module.module').then(m => m.TaskManagementModuleModule)
+    path: 'user',
+    loadChildren: () =>
+      import('./day-18/user/user-module/user-module.module').then(m => m.UserModuleModule),
+    resolve: {
+      simpleText: TextResolver,
+    },
   },
   {
-    path: 'profileModule', loadChildren: () =>
-      import('./day-13/user-profile-module/user-profile-module.module').then(m => m.UserProfileModuleModule)
+    path: 'admin', loadChildren: () =>
+      import('./day-18/admin/admin/admin.module').then(m => m.AdminModule),
+    canActivate: [accessGuardGuard]
   },
-  { path: 'day-9', component: Day9TaskComponent },
-  { path: 'day-10', component: Day10Component },
-  { path: 'day-11', component: Day11TaskComponent },
-  { path: 'day-12', component: Day12Component },
-  { path: 'day-15', component: UserInfoComponent },
-  { path: 'day-16', component: UserDataPageComponent },
-
-
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
