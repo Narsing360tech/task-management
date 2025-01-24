@@ -40,6 +40,17 @@ import { CreateorupdateComponent } from './day-16/componant/createorupdate/creat
 import { userstateReducer } from './state/day-16/userstate.reducer';
 import { UserStateEffects } from './state/day-16/userstate.effect';
 import { DeleteConfirmComponent } from './day-16/componant/delete-confirm/delete-confirm.component';
+import { UserLandingComponent } from './day-18/user/user-landing/user-landing.component';
+import { AdminComponantComponent } from './day-18/admin/admin-componant/admin-componant.component';
+import { UnAuthorizedComponent } from './landing-page/un-authorized/un-authorized.component';
+import { AdminService1Component } from './day-18/admin/admin-service1/admin-service1.component';
+import { AdminService2Component } from './day-18/admin/admin-service2/admin-service2.component';
+import { Services1Component } from './day-18/user/services1/services1.component';
+import { Services2Component } from './day-18/user/services2/services2.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+
+
 
 
 
@@ -58,6 +69,14 @@ import { DeleteConfirmComponent } from './day-16/componant/delete-confirm/delete
     UserDataPageComponent,
     CreateorupdateComponent,
     DeleteConfirmComponent,
+    UserLandingComponent,
+    AdminComponantComponent,
+    UnAuthorizedComponent,
+    AdminService1Component,
+    AdminService2Component,
+    Services1Component,
+    Services2Component,
+
   ],
   imports: [
     BrowserModule,
