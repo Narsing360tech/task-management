@@ -48,10 +48,8 @@ import { AdminService2Component } from './day-18/admin/admin-service2/admin-serv
 import { Services1Component } from './day-18/user/services1/services1.component';
 import { Services2Component } from './day-18/user/services2/services2.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
-
-
-
+import { postsReducer } from './state/post-state/post.reducer';
+import { PostsEffects } from './state/post-state/post.effect';
 
 
 @NgModule({
@@ -98,13 +96,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     ScrollingModule,
     MatDialogModule,
     StoreModule.forRoot({
-      tasks: taskReducer
+      tasks: taskReducer,
+
     }),
     EffectsModule.forRoot([
-      AllTaskEffect
+      AllTaskEffect,
+      PostsEffects
     ]),
-    StoreModule.forRoot({ users: userReducer, userstate: userstateReducer }),
-    EffectsModule.forRoot([UserEffects, UserStateEffects]),
+    StoreModule.forRoot({ users: userReducer, userstate: userstateReducer, posts: postsReducer }),
+    EffectsModule.forRoot([UserEffects, UserStateEffects, PostsEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
 
   ],

@@ -1,0 +1,19 @@
+<div class="add-button">
+  <button mat-flat-button color="primary" (click)="openAddPost()">
+    Add Post
+  </button>
+</div>
+
+<mat-card *ngFor="let post of postData" class="post-card">
+  <mat-card-header>
+    <mat-card-title>{{ post.title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ post.body }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="primary">View Details</button>
+    <button mat-button color="accent" (click)="editPost(post)">Edit</button>
+    <button mat-button color="warn" (click)="deletePost(post)">Delete</button>
+  </mat-card-actions>
+</mat-card>

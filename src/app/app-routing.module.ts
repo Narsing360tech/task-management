@@ -13,36 +13,41 @@ import { TextResolver } from './resolver';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
-  // {
-  //   path: 'taskManagementModule', loadChildren: () =>
-  //     import('./task-management-module/task-management-module.module').then(m => m.TaskManagementModuleModule)
-  // },
-  // {
-  //   path: 'profileModule', loadChildren: () =>
-  //     import('./day-13/user-profile-module/user-profile-module.module').then(m => m.UserProfileModuleModule)
-  // },
-  // { path: 'day-9', component: Day9TaskComponent },
-  // { path: 'day-10', component: Day10Component },
-  // { path: 'day-11', component: Day11TaskComponent },
-  // { path: 'day-12', component: Day12Component },
-  // { path: 'day-15', component: UserInfoComponent },
-  // { path: 'day-16', component: UserDataPageComponent },
-
-  { path: 'unauthorized', component: UnAuthorizedComponent },
-
   {
-    path: 'user',
-    loadChildren: () =>
-      import('./day-18/user/user-module/user-module.module').then(m => m.UserModuleModule),
-    resolve: {
-      simpleText: TextResolver,
-    },
+    path: 'taskManagementModule', loadChildren: () =>
+      import('./task-management-module/task-management-module.module').then(m => m.TaskManagementModuleModule)
   },
   {
-    path: 'admin', loadChildren: () =>
-      import('./day-18/admin/admin/admin.module').then(m => m.AdminModule),
-    canActivate: [accessGuardGuard]
+    path: 'profileModule', loadChildren: () =>
+      import('./day-13/user-profile-module/user-profile-module.module').then(m => m.UserProfileModuleModule)
   },
+  {
+    path: 'postModule', loadChildren: () =>
+      import('./day-19/postmodule/postmodule.module').then(m => m.PostmoduleModule)
+  },
+  { path: 'day-9', component: Day9TaskComponent },
+  { path: 'day-10', component: Day10Component },
+  { path: 'day-11', component: Day11TaskComponent },
+  { path: 'day-12', component: Day12Component },
+  { path: 'day-15', component: UserInfoComponent },
+  { path: 'day-16', component: UserDataPageComponent },
+
+
+  // { path: 'unauthorized', component: UnAuthorizedComponent },
+
+  // {
+  //   path: 'user',
+  //   loadChildren: () =>
+  //     import('./day-18/user/user-module/user-module.module').then(m => m.UserModuleModule),
+  //   resolve: {
+  //     simpleText: TextResolver,
+  //   },
+  // },
+  // {
+  //   path: 'admin', loadChildren: () =>
+  //     import('./day-18/admin/admin/admin.module').then(m => m.AdminModule),
+  //   canActivate: [accessGuardGuard]
+  // },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
