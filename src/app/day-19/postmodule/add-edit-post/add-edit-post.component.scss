@@ -4,12 +4,7 @@
   margin: 0 auto;
   background-color: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-}
-
-.form-container:hover {
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .form-group {
@@ -26,21 +21,24 @@ label {
 
 .mat-form-field {
   width: 100%;
-  background-color: #f4f4f4;
   border-radius: 8px;
   box-sizing: border-box;
+}
+
+.mat-input-element {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+textarea.mat-input-element {
+  height: auto;
+  min-height: 56px;
 }
 
 .mat-form-field .mat-label {
   font-weight: 500;
   color: #444;
 }
-
-.mat-form-field .mat-input-element:focus {
-  border-color: #3f51b5;
-  box-shadow: 0 0 5px rgba(63, 81, 181, 0.3);
-}
-
 .submit-btn-container {
   display: flex;
   justify-content: center;
@@ -48,12 +46,12 @@ label {
 }
 
 .submit-btn {
-  padding: 14px 28px;
+  padding: 6px 20px;
   font-size: 18px;
   font-weight: bold;
   background-color: #3f51b5;
   color: white;
-  border-radius: 50px;
+  border-radius: 10px;
   border: none;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   cursor: pointer;
@@ -78,12 +76,6 @@ label {
   margin-bottom: 6px;
 }
 
-.mat-input-element {
-  font-size: 16px;
-  height: 80%;
-  border-radius: 8px;
-}
-
 @media (max-width: 480px) {
   .form-container {
     padding: 20px;
@@ -94,4 +86,16 @@ label {
     padding: 12px 24px;
     font-size: 16px;
   }
+}
+
+::ng-deep .mat-form-field input.mat-input-element:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+::ng-deep .mat-form-field textarea.mat-input-element:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
 }

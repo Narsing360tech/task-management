@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store';
-import { loadPosts } from 'src/app/state/post-state/post.action';
+import { deletePostData, loadPosts } from 'src/app/state/post-state/post.action';
 import { selectAllPosts } from 'src/app/state/post-state/post.selector';
 import { AddEditPostComponent } from '../add-edit-post/add-edit-post.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-display-data',
@@ -12,11 +13,10 @@ import { AddEditPostComponent } from '../add-edit-post/add-edit-post.component';
 })
 export class DisplayDataComponent {
   postData: any[] = [];
-  constructor(private store: Store, private dialog: MatDialog) {
+  constructor(private store: Store, private dialog: MatDialog, private router: Router) {
     this.store.dispatch(loadPosts());
 
     this.store.pipe(select(selectAllPosts)).subscribe((res: any) => {
-      console.log(res);
       this.postData = res;
     });
 
@@ -36,10 +36,12 @@ export class DisplayDataComponent {
     })
   }
 
+  goToDetails(id: string): void {
+    this.router.navigate(['/postModule/details', id]);
+  }
+
   deletePost(post: any): void {
-    console.log('Delete post:', post);
-
-
+    this.store.dispatch(deletePostData({ id: post.id }));
   }
 
   openAddPost() {

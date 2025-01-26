@@ -17,7 +17,7 @@ export class PostServiceService {
     return this.http.post(this.postUrl, postdata);
   }
 
-  editPostData(newPostData: any, id: string) {
+  editPostData(id: string, newPostData: any,) {
     return this.http.put(`${this.postUrl}/${id}`, newPostData);
   }
 

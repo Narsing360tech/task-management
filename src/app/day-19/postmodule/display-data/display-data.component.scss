@@ -1,7 +1,16 @@
 .add-button {
   margin: 20px;
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
   border-radius: 10px;
+  align-items: center;
+  .title {
+    font-size: 25px;
+  }
+}
+
+.no-data {
+  text-align: center;
 }
 
 .post-list {
@@ -18,6 +27,7 @@
   border-radius: 12px;
   overflow: hidden;
   padding: 16px;
+  margin-bottom: 30px;
   background-color: #ffffff;
   transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -56,7 +66,7 @@ mat-card-actions button {
   color: #ffffff;
   background-color: #1976d2;
   border-radius: 4px;
-  padding: 8px 16px;
+  padding: 2px 6px;
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -67,6 +77,22 @@ mat-card-actions button:hover {
 
 mat-card-actions button:active {
   transform: scale(0.98);
+}
+
+mat-card-actions button.view-button {
+  background-color: #4caf50;
+}
+
+mat-card-actions button.view-button:hover {
+  background-color: #388e3c;
+}
+
+mat-card-actions button.delete-button {
+  background-color: #d32f2f;
+}
+
+mat-card-actions button.delete-button:hover {
+  background-color: #c62828;
 }
 
 p {
