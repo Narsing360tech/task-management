@@ -10,9 +10,11 @@ import { UserDataPageComponent } from './day-16/componant/user-data-page/user-da
 import { accessGuardGuard } from './guard/access-guard.guard';
 import { UnAuthorizedComponent } from './landing-page/un-authorized/un-authorized.component';
 import { TextResolver } from './resolver';
+import { ShowWidgetAllComponent } from './day-20/show-widget-all/show-widget-all.component';
 
 const routes: Routes = [
-  { path: '', component: LandingPageComponent },
+  { path: '', pathMatch: 'full', component: ShowWidgetAllComponent },
+  { path: 'landing', component: LandingPageComponent },
   {
     path: 'taskManagementModule', loadChildren: () =>
       import('./task-management-module/task-management-module.module').then(m => m.TaskManagementModuleModule)

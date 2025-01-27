@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -50,6 +50,11 @@ import { Services2Component } from './day-18/user/services2/services2.component'
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { postsReducer } from './state/post-state/post.reducer';
 import { PostsEffects } from './state/post-state/post.effect';
+import { HeaderComponantComponent } from './header-componant/header-componant.component';
+import { FooterComponantComponent } from './footer-componant/footer-componant.component';
+import { ShowWidgetAllComponent } from './day-20/show-widget-all/show-widget-all.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 @NgModule({
@@ -74,6 +79,9 @@ import { PostsEffects } from './state/post-state/post.effect';
     AdminService2Component,
     Services1Component,
     Services2Component,
+    HeaderComponantComponent,
+    FooterComponantComponent,
+    ShowWidgetAllComponent,
 
   ],
   imports: [
@@ -91,10 +99,14 @@ import { PostsEffects } from './state/post-state/post.effect';
     MatCardModule,
     MatTableModule,
     HttpClientModule,
+    MatInputModule,
     MatIconModule,
+    MatMenuModule,
     MatSnackBarModule,
     ScrollingModule,
     MatDialogModule,
+    MatBadgeModule,
+    FormsModule,
     StoreModule.forRoot({
       tasks: taskReducer,
 
