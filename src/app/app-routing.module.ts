@@ -11,9 +11,10 @@ import { accessGuardGuard } from './guard/access-guard.guard';
 import { UnAuthorizedComponent } from './landing-page/un-authorized/un-authorized.component';
 import { TextResolver } from './resolver';
 import { ShowWidgetAllComponent } from './day-20/show-widget-all/show-widget-all.component';
+import { Day21Component } from './day-21/day-21/day-21.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', component: ShowWidgetAllComponent },
+  { path: '', pathMatch: 'full', component: LandingPageComponent },
   { path: 'landing', component: LandingPageComponent },
   {
     path: 'taskManagementModule', loadChildren: () =>
@@ -33,6 +34,9 @@ const routes: Routes = [
   { path: 'day-12', component: Day12Component },
   { path: 'day-15', component: UserInfoComponent },
   { path: 'day-16', component: UserDataPageComponent },
+  { path: 'day-21', component: Day21Component },
+
+
 
 
   // { path: 'unauthorized', component: UnAuthorizedComponent },

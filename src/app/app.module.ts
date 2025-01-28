@@ -55,6 +55,10 @@ import { FooterComponantComponent } from './footer-componant/footer-componant.co
 import { ShowWidgetAllComponent } from './day-20/show-widget-all/show-widget-all.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatBadgeModule } from '@angular/material/badge';
+import { Day21Component } from './day-21/day-21/day-21.component';
+import { ProductListComponent } from './day-21/day-21/product-list/product-list.component';
+import { CartComponent } from './day-21/day-21/cart/cart.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -82,6 +86,9 @@ import { MatBadgeModule } from '@angular/material/badge';
     HeaderComponantComponent,
     FooterComponantComponent,
     ShowWidgetAllComponent,
+    Day21Component,
+    ProductListComponent,
+    CartComponent,
 
   ],
   imports: [
@@ -107,6 +114,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatDialogModule,
     MatBadgeModule,
     FormsModule,
+    MatTabsModule
+    ,
     StoreModule.forRoot({
       tasks: taskReducer,
 
