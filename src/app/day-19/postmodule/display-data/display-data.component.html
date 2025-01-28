@@ -1,0 +1,50 @@
+<div *ngIf="postData.length">
+  <div class="add-button">
+    <div>
+      <h3 class="title">Post List</h3>
+    </div>
+    <div>
+      <button mat-flat-button color="primary" (click)="openAddPost()">
+        Add Post
+      </button>
+    </div>
+  </div>
+
+  <mat-card *ngFor="let post of postData" class="post-card">
+    <mat-card-header>
+      <mat-card-title>{{ post.title }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ post.body }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-button
+        color="primary"
+        class="view-button"
+        (click)="goToDetails(post.id)"
+      >
+        View Details
+      </button>
+      <button
+        mat-button
+        color="accent"
+        class="edit-button"
+        (click)="editPost(post)"
+      >
+        Edit
+      </button>
+      <button
+        mat-button
+        color="warn"
+        class="delete-button"
+        (click)="deletePost(post)"
+      >
+        Delete
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<div *ngIf="postData.length === 0" class="no-data">
+  <h4>No Post Found</h4>
+</div>
