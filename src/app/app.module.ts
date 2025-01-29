@@ -59,6 +59,7 @@ import { Day21Component } from './day-21/day-21/day-21.component';
 import { ProductListComponent } from './day-21/day-21/product-list/product-list.component';
 import { CartComponent } from './day-21/day-21/cart/cart.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { TaskNumber22Component } from './day-22/task-number-22/task-number-22.component';
 
 
 @NgModule({
@@ -89,6 +90,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     Day21Component,
     ProductListComponent,
     CartComponent,
+    TaskNumber22Component,
 
   ],
   imports: [

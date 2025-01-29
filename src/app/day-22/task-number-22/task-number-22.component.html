@@ -1,0 +1,153 @@
+<div class="container">
+  <form [formGroup]="userInfo" (ngSubmit)="SaveData()" class="formData">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="Name" />
+        <mat-error *ngIf="userInfo.get('Name')?.hasError('required')">
+          Name is required.
+        </mat-error>
+        <mat-error *ngIf="userInfo.get('Name')?.hasError('minlength')">
+          Name length 3 characters minimum.
+        </mat-error>
+        <mat-error *ngIf="userInfo.get('Name')?.hasError('pattern')">
+          Name should not get spaces
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+        <mat-error *ngIf="userInfo.get('email')?.hasError('required')">
+          Email is required.
+        </mat-error>
+        <mat-error
+          *ngIf="
+            userInfo.get('email')?.hasError('pattern') &&
+            userInfo.get('email')?.touched
+          "
+        >
+          Enter a valid email.
+        </mat-error>
+        <mat-error
+          *ngIf="userInfo.get('email')?.hasError('emailDomainValidator')"
+        >
+          Enter valid domain
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          matInput
+          formControlName="password"
+        />
+        <!-- <mat-icon
+          matSuffix
+          [svgIcon]="showPassword ? 'eye' : 'eye-slash'"
+          (click)="togglePassword()"
+        >
+          home
+        </mat-icon> -->
+        <mat-error
+          *ngIf="
+            userInfo.controls['password'].invalid &&
+            userInfo.controls['password'].touched
+          "
+          class="error-conatiner"
+        >
+          <mat-error
+            *ngIf="userInfo.controls['password'].hasError('minlength')"
+          >
+            Password length should be 8 characters
+          </mat-error>
+          <mat-error *ngIf="userInfo.controls['password'].hasError('required')">
+            Password required
+          </mat-error>
+          <mat-error
+            *ngIf="userInfo.controls['password'].hasError('uppercase')"
+          >
+            Password must include one uppercase
+          </mat-error>
+          <mat-error
+            *ngIf="userInfo.controls['password'].hasError('lowercase')"
+          >
+            Password must include one lowercase
+          </mat-error>
+          <mat-error *ngIf="userInfo.controls['password'].hasError('digit')">
+            Password must include one digit
+          </mat-error>
+          <mat-error *ngIf="userInfo.controls['password'].hasError('symbol')">
+            Password must include one symbol
+          </mat-error>
+          <mat-error *ngIf="userInfo.controls['password'].hasError('noSpaces')">
+            Password must include noSpaces
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Confirm Password</mat-label>
+        <input
+          [type]="showConfirmPassword ? 'text' : 'password'"
+          matInput
+          formControlName="confirmPassword"
+        />
+        <!-- <mat-icon
+          matSuffix
+          [svgIcon]="showConfirmPassword ? 'eye' : 'eye-slash'"
+          (click)="togglePassword()"
+        >
+          {{ showConfirmPassword ? "visibility_off" : "visibility" }}
+        </mat-icon> -->
+
+        <mat-error
+          *ngIf="
+            userInfo.controls['confirmPassword'].hasError('required') &&
+            userInfo.controls['confirmPassword'].touched
+          "
+        >
+          Confirm password required
+        </mat-error>
+        <mat-error
+          *ngIf="
+            userInfo.controls['confirmPassword'].hasError('confirmPassword') &&
+            userInfo.controls['confirmPassword'].touched &&
+            !userInfo.controls['confirmPassword'].hasError('required')
+          "
+        >
+          Passwords do not match
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Phone Number(Optional)</mat-label>
+        <input
+          matInput
+          type="number"
+          (keydown)="preventInvalidInput($event)"
+          (input)="onContactNumberChange($event)"
+          formControlName="number"
+        />
+        <mat-error *ngIf="userInfo.get('number')?.hasError('pattern')">
+          Number is should be in 10 digit
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="update-button">
+      <button mat-flat-button color="primary" [disabled]="userInfo.invalid">
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
