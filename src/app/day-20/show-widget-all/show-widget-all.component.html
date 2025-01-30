@@ -1,0 +1,73 @@
+<div class="dashboard">
+  <mat-card class="widget user-stats" matRipple>
+    <div class="widget-header">
+      <mat-icon>person</mat-icon>
+      <h2>User Statistics</h2>
+    </div>
+    <div class="widget-content">
+      <p>Total Users: <strong>5,421</strong></p>
+      <p>Active Users: <strong>3,214</strong></p>
+      <p>New Users Today: <strong>112</strong></p>
+    </div>
+  </mat-card>
+
+  <mat-card class="widget sales-performance">
+    <div class="widget-header">
+      <mat-icon>bar_chart</mat-icon>
+      <h2>Sales Performance</h2>
+    </div>
+    <div class="widget-content">
+      <canvas id="salesChart"></canvas>
+      <div class="sales-summary">
+        <p>Today's Sales: <strong>$1,204</strong></p>
+        <p>Week's Total: <strong>$7,321</strong></p>
+      </div>
+    </div>
+  </mat-card>
+
+  <mat-card class="widget notifications">
+    <div class="widget-header">
+      <mat-icon>notifications</mat-icon>
+      <h2>Notifications</h2>
+      <mat-badge
+        [hidden]="!unreadCount"
+        [matBadge]="unreadCount"
+        matBadgeOverlap="false"
+      ></mat-badge>
+    </div>
+    <div class="widget-content scrollable">
+      <mat-list>
+        <mat-list-item *ngFor="let notification of notifications">
+          {{ notification }}
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <button mat-stroked-button (click)="markAllAsRead()">
+      Mark All as Read
+    </button>
+  </mat-card>
+
+  <mat-card class="widget tasks">
+    <div class="widget-header">
+      <mat-icon>checklist</mat-icon>
+      <h2>Tasks</h2>
+    </div>
+    <div class="widget-content">
+      <mat-list class="list">
+        <mat-list-item *ngFor="let task of tasks">
+          <mat-checkbox [(ngModel)]="task.completed">
+            <span [class.completed]="task.completed">{{ task.name }}</span>
+          </mat-checkbox>
+        </mat-list-item>
+      </mat-list>
+      <div class="task-input">
+        <mat-form-field appearance="outline">
+          <input matInput [(ngModel)]="newTask" placeholder="New Task" />
+        </mat-form-field>
+        <button mat-icon-button color="primary" (click)="addTask()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card>
+</div>

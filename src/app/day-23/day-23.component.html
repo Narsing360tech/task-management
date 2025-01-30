@@ -1,0 +1,20 @@
+<div class="menu-container">
+  <button class="menu-button" (click)="toggleMenu()">
+    {{ menuOpen ? "Close Menu" : "Open Menu" }}
+  </button>
+
+  <ul
+    class="menu"
+    [@menuState]="menuOpen ? 'open' : 'closed'"
+    (@menuState.done)="menuOpen ? onMenuOpened() : onMenuClosed()"
+  >
+    <li
+      *ngFor="let item of menuItems"
+      [@hoverEffect]="hoverState[item] || 'inactive'"
+      (mouseenter)="setHoverState(item, 'active')"
+      (mouseleave)="setHoverState(item, 'inactive')"
+    >
+      {{ item }}
+    </li>
+  </ul>
+</div>

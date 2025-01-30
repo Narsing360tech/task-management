@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -40,7 +40,27 @@ import { CreateorupdateComponent } from './day-16/componant/createorupdate/creat
 import { userstateReducer } from './state/day-16/userstate.reducer';
 import { UserStateEffects } from './state/day-16/userstate.effect';
 import { DeleteConfirmComponent } from './day-16/componant/delete-confirm/delete-confirm.component';
-
+import { UserLandingComponent } from './day-18/user/user-landing/user-landing.component';
+import { AdminComponantComponent } from './day-18/admin/admin-componant/admin-componant.component';
+import { UnAuthorizedComponent } from './landing-page/un-authorized/un-authorized.component';
+import { AdminService1Component } from './day-18/admin/admin-service1/admin-service1.component';
+import { AdminService2Component } from './day-18/admin/admin-service2/admin-service2.component';
+import { Services1Component } from './day-18/user/services1/services1.component';
+import { Services2Component } from './day-18/user/services2/services2.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { postsReducer } from './state/post-state/post.reducer';
+import { PostsEffects } from './state/post-state/post.effect';
+import { HeaderComponantComponent } from './header-componant/header-componant.component';
+import { FooterComponantComponent } from './footer-componant/footer-componant.component';
+import { ShowWidgetAllComponent } from './day-20/show-widget-all/show-widget-all.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatBadgeModule } from '@angular/material/badge';
+import { Day21Component } from './day-21/day-21/day-21.component';
+import { ProductListComponent } from './day-21/day-21/product-list/product-list.component';
+import { CartComponent } from './day-21/day-21/cart/cart.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { TaskNumber22Component } from './day-22/task-number-22/task-number-22.component';
+import { Day23Component } from './day-23/day-23.component';
 
 
 @NgModule({
@@ -58,6 +78,22 @@ import { DeleteConfirmComponent } from './day-16/componant/delete-confirm/delete
     UserDataPageComponent,
     CreateorupdateComponent,
     DeleteConfirmComponent,
+    UserLandingComponent,
+    AdminComponantComponent,
+    UnAuthorizedComponent,
+    AdminService1Component,
+    AdminService2Component,
+    Services1Component,
+    Services2Component,
+    HeaderComponantComponent,
+    FooterComponantComponent,
+    ShowWidgetAllComponent,
+    Day21Component,
+    ProductListComponent,
+    CartComponent,
+    TaskNumber22Component,
+    Day23Component,
+
   ],
   imports: [
     BrowserModule,
@@ -74,18 +110,26 @@ import { DeleteConfirmComponent } from './day-16/componant/delete-confirm/delete
     MatCardModule,
     MatTableModule,
     HttpClientModule,
+    MatInputModule,
     MatIconModule,
+    MatMenuModule,
     MatSnackBarModule,
     ScrollingModule,
     MatDialogModule,
+    MatBadgeModule,
+    FormsModule,
+    MatTabsModule
+    ,
     StoreModule.forRoot({
-      tasks: taskReducer
+      tasks: taskReducer,
+
     }),
     EffectsModule.forRoot([
-      AllTaskEffect
+      AllTaskEffect,
+      PostsEffects
     ]),
-    StoreModule.forRoot({ users: userReducer, userstate: userstateReducer }),
-    EffectsModule.forRoot([UserEffects, UserStateEffects]),
+    StoreModule.forRoot({ users: userReducer, userstate: userstateReducer, posts: postsReducer }),
+    EffectsModule.forRoot([UserEffects, UserStateEffects, PostsEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
 
   ],
