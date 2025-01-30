@@ -13,6 +13,7 @@ import { TextResolver } from './resolver';
 import { ShowWidgetAllComponent } from './day-20/show-widget-all/show-widget-all.component';
 import { Day21Component } from './day-21/day-21/day-21.component';
 import { TaskNumber22Component } from './day-22/task-number-22/task-number-22.component';
+import { Day23Component } from './day-23/day-23.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: LandingPageComponent },
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'day-16', component: UserDataPageComponent },
   { path: 'day-21', component: Day21Component },
   { path: 'day-22', component: TaskNumber22Component },
+  { path: 'day-23', component: Day23Component },
 
 
 

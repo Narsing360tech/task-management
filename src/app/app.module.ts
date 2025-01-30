@@ -60,6 +60,7 @@ import { ProductListComponent } from './day-21/day-21/product-list/product-list.
 import { CartComponent } from './day-21/day-21/cart/cart.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { TaskNumber22Component } from './day-22/task-number-22/task-number-22.component';
+import { Day23Component } from './day-23/day-23.component';
 
 
 @NgModule({
@@ -91,6 +92,7 @@ import { TaskNumber22Component } from './day-22/task-number-22/task-number-22.co
     ProductListComponent,
     CartComponent,
     TaskNumber22Component,
+    Day23Component,
 
   ],
   imports: [
